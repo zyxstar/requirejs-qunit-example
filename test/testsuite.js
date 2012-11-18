@@ -16,8 +16,8 @@
   // the `baseUrl` value supplied above.
   var testModules = [
     'modules/commonTest.js',
-    'modules/colorboxEventTest.js',
-    'modules/colorboxCallbackTest.js'
+    'modules/colorbox/colorboxEventTest.js',
+    'modules/colorbox/colorboxCallbackTest.js'
   ];
 
   // Resolve all testModules and then start the Test Runner.

@@ -16,12 +16,28 @@ define(function(require){
   init = function() {
     $('html').addClass('ready');
     $('li').addClass('list-item');
-    
+  },
+  
+  loadContent = function(callback) {
+
+    var data, cb = callback || function(data) {
+      return data;
+    };
+
+    data = $.ajax({
+      url: 'data/ajax.html',
+      success: cb  
+    });
+
+    return {
+      data: data
+    };
   };
 
   return {
     init: init,
-    hellofn: hellofn
+    hellofn: hellofn,
+    loadContent: loadContent
   };
 
 });
