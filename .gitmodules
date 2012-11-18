@@ -10,3 +10,9 @@
 [submodule "app/js/libs/jquery"]
 	path = app/js/libs/jquery
 	url = git://github.com/jquery/jquery.git
+[submodule "test/libs/qunit"]
+	path = test/libs/qunit
+	url = git://github.com/jquery/qunit.git
+[submodule "test/libs/sinon"]
+	path = test/libs/sinon
+	url = git://github.com/cjohansen/Sinon.JS.git
