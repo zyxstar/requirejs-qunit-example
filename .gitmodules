@@ -1,0 +1,12 @@
+[submodule "app/js/libs/almond"]
+	path = app/js/libs/almond
+	url = git://github.com/jrburke/almond.git
+[submodule "app/js/libs/requirejs"]
+	path = app/js/libs/requirejs
+	url = git://github.com/jrburke/requirejs.git
+[submodule "app/js/libs/text"]
+	path = app/js/libs/text
+	url = git://github.com/requirejs/text.git
+[submodule "app/js/libs/jquery"]
+	path = app/js/libs/jquery
+	url = git://github.com/jquery/jquery.git
