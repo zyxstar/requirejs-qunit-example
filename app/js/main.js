@@ -1,6 +1,6 @@
 require.config({
   
-  baseUrl: '/js',
+  baseUrl: 'js',
 
   paths: {
     text: 'libs/text/text',

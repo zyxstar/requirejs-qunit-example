@@ -6,12 +6,18 @@ define(function(require){
 
   var
   
+  $ = require('jquery'),
+
   mouseEnter = function(){
-    console.log('mouseover');
+    
+    console.log(thhis)
+    $(this).addClass('enter');
+
+    return 'mouseenter';
   },
 
   mouseLeave = function(){
-    console.log('mouseleave');
+    $(this).removeClass('enter');
     return 'mouseleave';
   };
 
