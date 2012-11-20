@@ -5,19 +5,18 @@ define(function(require) {
   var
   
   $ = require('jquery'),
-  common = require('app/js/modules/common'),
+  common = require('module/common'),
   list = require('text!test/fixtures/list.html!strip'),
-  fixture = $('#qunit-fixture');
+  fixture = $('#qunit-fixture'),
+  setFixture = function(html){
+    return $('#qunit-fixture').append(html);
+  };
 
 
   /**
     synchronous unit tests
   */
-  module('common sync', {
-    setup: function() {
-      fixture.append(list);
-    }
-  });
+  module('common sync');
 
     test( 'qunit is up and running', function() {
       ok( true, 'true succeeds' );
@@ -77,7 +76,7 @@ define(function(require) {
   */
   module('common dom', {
     setup: function() {
-      fixture.append(list);
+      setFixture(list);
     }
   });
 
@@ -92,8 +91,19 @@ define(function(require) {
   */
   module('common user');
 
-    test('dummy', function() {
-      ok(true);
-    });
+  test('mouseenter add class enter', 1, function(){
+
+    var
+
+    evt = $.Event('mouseenter'),
+    fix = setFixture(list),
+    anc = fix.find('a').first();
+
+    require('module/colorbox/gallerys').init();
+    anc.trigger(evt);
+
+    ok(anc.hasClass('enter'),'should have class enter');
+
+  });
 
 });

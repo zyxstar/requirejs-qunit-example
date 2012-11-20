@@ -10,7 +10,7 @@ define(function(require){
 
   mouseEnter = function(){
     
-    console.log(thhis)
+    console.log(this)
     $(this).addClass('enter');
 
     return 'mouseenter';

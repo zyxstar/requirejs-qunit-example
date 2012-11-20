@@ -16,3 +16,6 @@
 [submodule "test/libs/sinon"]
 	path = test/libs/sinon
 	url = git://github.com/cjohansen/Sinon.JS.git
+[submodule "app/js/plugins/colorbox"]
+	path = app/js/plugins/colorbox
+	url = git://github.com/jackmoore/colorbox.git

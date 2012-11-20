@@ -4,8 +4,8 @@ define(function(require){
 
   console.log('init');
 
-  require('modules/common');
-  require('modules/colorbox/gallerys');
+  require('modules/common').init();
+  require('modules/colorbox/gallerys').init();
 
   console.timeEnd('init');
 });
