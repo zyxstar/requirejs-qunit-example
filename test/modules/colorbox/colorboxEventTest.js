@@ -1,17 +1,41 @@
-define(function (require) {
+define(function(require) {
 
   'use strict';
 
   var
 
   $ = require('jquery'),
-  cbox_event = require('app/js/modules/colorbox/events'),
-  fixture = $('#qunit-fixture');
+  $helper = require('test/testhelper'),
+  $colorboxEvent = require('app/js/modules/colorbox/events');
 
   module('colorbox events');
 
   test( 'mouseleave return a string', function() {
-    equal(cbox_event.mouseleave(), 'mouseleave', 'should be mouseleave');
+    equal($colorboxEvent.mouseleave(), 'mouseleave', 'should be mouseleave');
+  });
+
+
+  /**
+    user actions unit tests
+  */
+  module('common user');
+
+  test('mouseenter add class enter', 1, function(){
+
+    var
+
+    event = $.Event('mouseenter'),
+    list = require('text!test/fixtures/list.html!strip'),
+    fixture = $helper.setFixture(list),
+    element;
+
+    require('module/colorbox/gallerys').init();
+
+    element = fixture.find('a').first();
+    element.trigger(event);
+
+    ok(element.hasClass('enter'),'should have class enter');
+
   });
 
 });

@@ -5,12 +5,8 @@ define(function(require) {
   var
   
   $ = require('jquery'),
-  common = require('module/common'),
-  list = require('text!test/fixtures/list.html!strip'),
-  fixture = $('#qunit-fixture'),
-  setFixture = function(html){
-    return $('#qunit-fixture').append(html);
-  };
+  $helper = require('test/testhelper'),
+  $common = require('module/common');
 
 
   /**
@@ -18,13 +14,13 @@ define(function(require) {
   */
   module('common sync');
 
-    test( 'qunit is up and running', function() {
-      ok( true, 'true succeeds' );
-    });
+  test( 'qunit is up and running', function() {
+    ok( true, 'true succeeds' );
+  });
 
-    test( 'hellofn return 0', function() {
-      equal(common.hellofn(), 0, 'should be 0' );
-    });
+  test( 'hellofn return 0', function() {
+    equal($common.hellofn(), 0, 'should be 0' );
+  });
 
 
   /**
@@ -32,78 +28,63 @@ define(function(require) {
   */
   module('common async');
 
-    test('an async settimeout test', 1, function(){
+  test('an async settimeout test', 1, function(){
 
-      // Pause the test, and fail it if start() isn't called after one second  
-      stop();
+    // Pause the test, and fail it if start() isn't called after one second  
+    stop();
 
-      setTimeout(function(){
-        ok(true, 'passed and ready to resume');
+    setTimeout(function(){
+      ok(true, 'passed and ready to resume');
 
-        start();
-      }, 1000);
+      start();
+    }, 1000);
 
+  });
+
+  asyncTest('ajax callback test', function() {
+
+    // asyncTest is implicit calling stop()
+    $common.loadContent(function(data) {
+      // ...asynchronous assertions
+      ok(data.length);
+      equal(data, 'loaded via ajax call...');
+      start();
     });
 
-    asyncTest('ajax callback test', function() {
+  });
 
-      // asyncTest is implicit calling stop()
-      common.loadContent(function(data) {
-        // ...asynchronous assertions
-        ok(data.length);
-        equal(data, 'loaded via ajax call...');
-        start();
-      });
+  asyncTest('ajax response test', function() {
 
-    });
+    var
 
-    asyncTest('ajax response test', function() {
+    response = $common.loadContent();
 
-      var response = common.loadContent();
+    setTimeout(function() {
 
-      setTimeout(function() {
+      equal(response.data.responseText, 'loaded via ajax call...');
+      start();
 
-        equal(response.data.responseText, 'loaded via ajax call...');
-        start();
+    }, 500 );
 
-      }, 500 );
-
-    });
+  });
 
 
   /**
     dom unit tests
   */
-  module('common dom', {
-    setup: function() {
-      setFixture(list);
-    }
-  });
+  module('common dom');
 
     test('all li\'s hasclass list-item', function() {
-      common.init();
+
+      var
+
+      list = require('text!test/fixtures/list.html!strip'),
+      fixture = $helper.setFixture(list);
+
+      $common.init();
+
       ok(fixture.find('li').hasClass('list-item'));
+
     });
-
-
-  /**
-    user actions unit tests
-  */
-  module('common user');
-
-  test('mouseenter add class enter', 1, function(){
-
-    var
-
-    evt = $.Event('mouseenter'),
-    fix = setFixture(list),
-    anc = fix.find('a').first();
-
-    require('module/colorbox/gallerys').init();
-    anc.trigger(evt);
-
-    ok(anc.hasClass('enter'),'should have class enter');
-
-  });
 
 });
