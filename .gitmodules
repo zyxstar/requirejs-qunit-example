@@ -22,3 +22,6 @@
 [submodule "test/libs/funcunit"]
 	path = test/libs/funcunit
 	url = git@github.com:bitovi/funcunit.git
+[submodule "test/libs/steal"]
+	path = test/libs/steal
+	url = git@github.com:bitovi/steal.git
