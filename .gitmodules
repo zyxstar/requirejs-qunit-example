@@ -19,3 +19,6 @@
 [submodule "app/js/plugins/colorbox"]
 	path = app/js/plugins/colorbox
 	url = git://github.com/jackmoore/colorbox.git
+[submodule "test/libs/funcunit"]
+	path = test/libs/funcunit
+	url = git@github.com:bitovi/funcunit.git
