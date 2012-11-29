@@ -10,8 +10,11 @@ var require = {
   },
 
   shim: {
-
     'jquery': {
+      exports: 'jquery'
+    },
+    'colorbox': {
+      deps: ['jquery'],
       exports: 'jquery'
     }
   }

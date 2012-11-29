@@ -5,8 +5,7 @@ define(function(require){
   var
 
   $ = require('jquery'),
-  cbox_callback = require('app/js/modules/colorbox/callbacks'),
-  fixture = $('#qunit-fixture');
+  cbox_callback = require('app/js/modules/colorbox/callbacks');
 
   module('colorbox callbacks');
 

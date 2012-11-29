@@ -36,6 +36,8 @@ define(function(require) {
 
     ok(element.hasClass('enter'),'should have class enter');
 
+    // selenium is the better way to do this stuff -> funcunit
+
   });
 
 });

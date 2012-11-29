@@ -8,11 +8,23 @@ define(function(require) {
   $helper = require('test/testhelper'),
   $common = require('module/common');
 
-
+  // http://api.qunitjs.com/category/test/
   /**
     synchronous unit tests
   */
-  module('common sync');
+  module('common sync', {
+    
+    setup: function() {
+      ok( true, "one extra assert per test" );
+    },
+
+    teardown: function() {
+      ok( true, "and one extra assert after each test" );
+    }
+
+  });
+
+  // http://api.qunitjs.com/category/assert/
 
   test( 'qunit is up and running', function() {
     ok( true, 'true succeeds' );
@@ -23,6 +35,7 @@ define(function(require) {
   });
 
 
+  // http://api.qunitjs.com/category/async-control/
   /**
     asynchronous unit tests
   */
@@ -34,8 +47,7 @@ define(function(require) {
     stop();
 
     setTimeout(function(){
-      ok(true, 'passed and ready to resume');
-
+      ok(false, 'passed and ready to resume');
       start();
     }, 1000);
 
